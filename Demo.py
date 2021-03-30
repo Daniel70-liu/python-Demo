@@ -1,41 +1,40 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar 23 13:38:12 2021
+import random as rand
+class Demo:
+    def __init__(self):
+        print(self.genRandomList())
+        self.p,self.q= map(int,input().split())
+        self.N=self.p*self.q
+        selfN1=(self.p-1)*(self.q-1)
+        print(self.genEList())
+        self=int(input())
+    def encrypt(self,msg):
+        print("Encrypy")
+    def decrypt(self,msg):
+        print("Decrypt")
+    def genRandomList(self):
+        data = []
+        while len(data)<6:
+            y=rand.randint(1024,65535)
+            if isPrime(y):
+                data.append(y)
+                return data    
+    def isPrime(self,x):
+        flag=True
+        i=2
+        while i<x//2:
+            if x%i==0:
+                flag=False
+                break
+            i=i+1
+            return flag
+    def fun(self, N1, e):
+        maxVal = max (N1, e)
+        minVal = min (N1, e)
+        if maxVal %minVal==0 :
+            return minVal
+        else:
+            return fun(minVal,maxVal%minVal)   
 
-@author: ASIA-H103
-"""
-import sys
-class Crypt:
-    def __init__(self, key):
-        self.key= key
-    
-    def encrypt(self, msg):
-        keyList= list(self.key)
-        msgList= list(msg)
-        keyLen=len(keyList)
-        msgLen=len(msgList)
-        cipherText = [''] * msgLen
-        for i in range(msgLen):
-            cipherText[i]=chr(ord(msgList[i])^ord(keyList[i%keyLen]))
-        return ''.join(cipherText)
-    def decrypt(self, msg):
-        keyList= list(self.key)
-        msgList= list(msg)
-        keyLen=len(keyList)
-        msgLen=len(msgList)
-        cipherText = [''] * msgLen
-        for i in range(msgLen):
-            cipherText[i]=chr(ord(msgList[i])^ord(keyList[i%keyLen]))
-        return ''.join(cipherText)   
-
-if __name__ == "__main__":
-    print(sys.argv)
-    if len(sys.argv)>2:
-        if sys.argv[1]=='-e':
-            c=Crypt(sys.argv[2])
-            print(c.encrypt(sys.argv[3]))
-        elif sys.argv[1]=='-d':
-             c=Crypt(sys.argv[2])
-             print(c.decrypt(sys.argv[3]))
-            
-     
+if __name__=='__main__':
+    rsa=Demo()
+    rsa.encrypt()            
